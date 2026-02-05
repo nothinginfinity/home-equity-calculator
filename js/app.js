@@ -142,6 +142,11 @@ function update() {
 
   // Update decision helper
   updateDecision(hei, heq, heloc, cheapest);
+
+  // Update charts (Phase 2)
+  if (typeof updateAllCharts === 'function') {
+    updateAllCharts();
+  }
 }
 
 function updateCard(type, data, cheapest, maxCost) {

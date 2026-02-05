@@ -365,10 +365,80 @@ body {
   color: var(--text-dim);
 }
 
+/* ── Charts Section ── */
+.charts-section {
+  margin-bottom: 28px;
+}
+.charts-row {
+  margin-bottom: 16px;
+}
+.charts-row.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.chart-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  position: relative;
+}
+.chart-container.wide {
+  width: 100%;
+}
+.chart-container canvas {
+  width: 100% !important;
+  height: 280px !important;
+}
+.breakeven-indicator {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--surface2);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  text-align: center;
+}
+.breakeven-indicator strong {
+  color: var(--text);
+}
+.sensitivity-summary {
+  margin-top: 12px;
+  padding: 12px;
+  background: var(--surface2);
+  border-radius: var(--radius-sm);
+}
+.sens-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.sens-row:last-child {
+  border-bottom: none;
+}
+.sens-rate {
+  font-weight: 700;
+  color: var(--text);
+  min-width: 55px;
+}
+.sens-eff {
+  color: var(--text-dim);
+  min-width: 110px;
+}
+.sens-diff {
+  font-weight: 600;
+  text-align: right;
+  flex: 1;
+}
+
 /* ── Responsive ── */
 @media (max-width: 1200px) {
   .cards-row { grid-template-columns: 1fr; }
   .qual-grid { grid-template-columns: 1fr; }
+  .charts-row.two-col { grid-template-columns: 1fr; }
 }
 @media (max-width: 900px) {
   .dashboard { grid-template-columns: 1fr; }

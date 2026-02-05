@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -160,6 +161,25 @@
 
       </div>
 
+      <!-- Charts Section -->
+      <div class="charts-section">
+        <div class="charts-row">
+          <div class="chart-container wide">
+            <canvas id="cost-over-time-chart"></canvas>
+            <div class="breakeven-indicator" id="breakeven-indicator"></div>
+          </div>
+        </div>
+        <div class="charts-row two-col">
+          <div class="chart-container">
+            <canvas id="sensitivity-chart"></canvas>
+            <div class="sensitivity-summary" id="sensitivity-summary"></div>
+          </div>
+          <div class="chart-container">
+            <canvas id="monthly-payment-chart"></canvas>
+          </div>
+        </div>
+      </div>
+
       <!-- Qualification Check -->
       <div class="qual-section">
         <h3>Qualification Check</h3>
@@ -189,6 +209,7 @@
   </div>
 
   <script src="js/calculators.js"></script>
+  <script src="js/charts.js"></script>
   <script src="js/app.js"></script>
 
 </body>

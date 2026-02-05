@@ -472,14 +472,15 @@ function renderStep5() {
       return { ...p, totalCost: r.totalCost, effectiveRate: r.effectiveRate, term };
     }).sort((a, b) => a.totalCost - b.totalCost),
     heq: [
-      { name: 'Local Bank/Credit Union', origFee: 1.0, note: 'Often best rates for members' },
-      { name: 'Online Lender (SoFi, etc.)', origFee: 0.5, note: 'Fast approval, competitive rates' },
-      { name: 'Mortgage Broker', origFee: 1.5, note: 'Shops multiple lenders for you' },
+      { name: 'SoFi', origFee: 0, note: 'No origination fees, $50K-$750K, fixed rates from ~7%', url: 'https://www.sofi.com/home-loans/home-equity-loan/', applyUrl: 'https://www.sofi.com/home-loans/home-equity-loan/' },
+      { name: 'Figure', origFee: 0, note: 'Approve in 5 min, fund in 5 days, 100% online', url: 'https://www.figure.com/', applyUrl: 'https://www.figure.com/home-equity-line/' },
+      { name: 'Local Bank/Credit Union', origFee: 1.0, note: 'Often best rates for members, in-person support', url: null, applyUrl: null },
+      { name: 'Mortgage Broker', origFee: 1.5, note: 'Shops multiple lenders for your best rate', url: null, applyUrl: null },
     ],
     heloc: [
-      { name: 'Local Bank/Credit Union', origFee: 0.5, note: 'May waive fees for existing customers' },
-      { name: 'Online Lender', origFee: 0, note: 'Many offer $0 closing costs' },
-      { name: 'Figure.com', origFee: 0, note: 'Fully online, fast approval' },
+      { name: 'Figure', origFee: 0, note: '#1 non-bank HELOC lender, approve in 5 min, fund in 5 days', url: 'https://www.figure.com/', applyUrl: 'https://www.figure.com/home-equity-line/' },
+      { name: 'SoFi', origFee: 0, note: 'Up to 90% LTV, $500K max, variable rates', url: 'https://www.sofi.com/home-loans/heloc/', applyUrl: 'https://www.sofi.com/home-loans/heloc/' },
+      { name: 'Local Bank/Credit Union', origFee: 0.5, note: 'May waive fees for existing customers', url: null, applyUrl: null },
     ],
   };
 
@@ -503,6 +504,15 @@ function renderStep5() {
             <span>Term: ${p.term}yr</span>
             <span>Eff: ${p.effectiveRate.toFixed(1)}%</span>
           </div>
+          <div class="pm-extras">
+            <span>Min Credit: ${p.minCredit}</span>
+            <span>Max: ${fmtD(p.maxFunding)}</span>
+            <span>${p.states}</span>
+          </div>
+          <div class="pm-actions">
+            <a href="${p.applyUrl}" target="_blank" rel="noopener" class="btn-primary btn-apply">Apply Now</a>
+            <a href="${p.url}" target="_blank" rel="noopener" class="btn-secondary btn-learn">Learn More</a>
+          </div>
         </div>
       `).join('') : list.map((p, i) => `
         <div class="pm-card ${i === 0 ? 'best' : ''}">
@@ -512,6 +522,11 @@ function renderStep5() {
             <span>Orig Fee: ${p.origFee}%</span>
           </div>
           <div class="pm-note">${p.note}</div>
+          ${p.applyUrl ? `
+          <div class="pm-actions">
+            <a href="${p.applyUrl}" target="_blank" rel="noopener" class="btn-primary btn-apply">Apply Now</a>
+            <a href="${p.url}" target="_blank" rel="noopener" class="btn-secondary btn-learn">Learn More</a>
+          </div>` : '<div class="pm-actions"><span class="pm-local-note">Contact your local institution</span></div>'}
         </div>
       `).join('')}
     </div>

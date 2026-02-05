@@ -1,11 +1,11 @@
 // ── Home Equity Calculator Engine ──
 
 const HEI_PROVIDERS = [
-  { name: "Hometap",  origFee: 3.5, riskAdj: 85, minTerm: 10, maxTerm: 10 },
-  { name: "Point",    origFee: 3.9, riskAdj: 80, minTerm: 30, maxTerm: 30 },
-  { name: "Unlock",   origFee: 3.0, riskAdj: 82, minTerm: 10, maxTerm: 10 },
-  { name: "Splitero", origFee: 4.0, riskAdj: 88, minTerm: 30, maxTerm: 30 },
-  { name: "Aspire",   origFee: 3.5, riskAdj: 83, minTerm: 15, maxTerm: 15 },
+  { name: "Hometap",  origFee: 3.5, riskAdj: 85, minTerm: 10, maxTerm: 10, url: "https://www.hometap.com/", applyUrl: "https://go.hometap.com/dashboard/overview", minCredit: 600, states: "16 states + DC", maxFunding: 600000 },
+  { name: "Point",    origFee: 3.9, riskAdj: 80, minTerm: 30, maxTerm: 30, url: "https://point.com/hei", applyUrl: "https://point.com/hei", minCredit: 500, states: "Nationwide (select markets)", maxFunding: 600000 },
+  { name: "Unlock",   origFee: 3.0, riskAdj: 82, minTerm: 10, maxTerm: 10, url: "https://www.unlock.com/", applyUrl: "https://www.unlock.com/how-it-works/", minCredit: 500, states: "Nationwide (select markets)", maxFunding: 500000 },
+  { name: "Splitero", origFee: 4.0, riskAdj: 88, minTerm: 30, maxTerm: 30, url: "https://www.splitero.com/", applyUrl: "https://www.splitero.com/shared-equity", minCredit: 500, states: "Select states", maxFunding: 500000 },
+  { name: "Aspire",   origFee: 3.5, riskAdj: 83, minTerm: 15, maxTerm: 15, url: "https://www.aspirehei.com/", applyUrl: "https://www.aspirehei.com/access-your-home-equity/", minCredit: 660, states: "12 states + DC", maxFunding: 250000 },
 ];
 
 function calcHEI(homeValue, cashNeeded, appreciationRate, termYears, riskAdj = 85, origFee = 3.5) {

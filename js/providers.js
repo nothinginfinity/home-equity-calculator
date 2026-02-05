@@ -24,6 +24,8 @@ function updateProviderSection() {
       totalCost: r.totalCost,
       effectiveRate: r.effectiveRate,
       futureValue: r.futureHomeValue,
+      url: p.url,
+      applyUrl: p.applyUrl,
     };
   });
 
@@ -51,6 +53,7 @@ function updateProviderSection() {
       <td class="money">${fmtD(r.origCost)}</td>
       <td class="money total-cell">${fmtD(r.totalCost)}</td>
       <td>${r.effectiveRate.toFixed(1)}%</td>
+      <td class="apply-cell"><a href="${r.applyUrl}" target="_blank" rel="noopener" class="table-apply-btn">Apply</a></td>
     </tr>`;
   }).join('');
 

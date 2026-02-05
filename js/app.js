@@ -152,6 +152,11 @@ function update() {
   if (typeof updateProviderSection === 'function') {
     updateProviderSection();
   }
+
+  // Update intelligence (Phase 4)
+  if (typeof updateIntelligence === 'function') {
+    updateIntelligence();
+  }
 }
 
 function updateCard(type, data, cheapest, maxCost) {
@@ -259,5 +264,6 @@ function updateDecision(hei, heq, heloc, cheapest) {
 // ── Init ──
 document.addEventListener("DOMContentLoaded", () => {
   initInputs();
+  if (typeof initScenarios === 'function') initScenarios();
   update();
 });

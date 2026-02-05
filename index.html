@@ -236,10 +236,54 @@
         </div>
       </div>
 
-      <!-- Decision Helper -->
+      <!-- Decision Helper (original, kept compact) -->
       <div class="decision-box">
         <h3>Decision Helper</h3>
         <p></p>
+      </div>
+
+      <!-- Phase 4: Decision Intelligence -->
+
+      <!-- Smart Recommendation -->
+      <div class="intel-section rec-section">
+        <div class="intel-header">
+          <h3>Smart Recommendation</h3>
+          <span class="intel-badge">AI Analysis</span>
+        </div>
+        <div id="recommendation-body"></div>
+      </div>
+
+      <!-- Scenario Builder -->
+      <div class="intel-section scenario-section">
+        <div class="intel-header">
+          <h3>Scenario Builder</h3>
+          <div class="scenario-actions">
+            <button class="btn-primary" onclick="captureScenario()">Capture Snapshot</button>
+            <button class="btn-secondary" onclick="clearScenarios()">Clear All</button>
+          </div>
+        </div>
+        <p class="intel-desc">Save different scenarios to compare side-by-side. Change your inputs, capture a snapshot, then compare.</p>
+        <div id="scenario-list"></div>
+      </div>
+
+      <!-- Cash Flow Analysis -->
+      <div class="intel-section cashflow-section">
+        <div class="intel-header">
+          <h3>Cash Flow Impact</h3>
+        </div>
+        <div id="cashflow-body"></div>
+      </div>
+
+      <!-- Export -->
+      <div class="intel-section export-section">
+        <div class="intel-header">
+          <h3>Export & Share</h3>
+        </div>
+        <div class="export-buttons">
+          <button class="btn-primary" onclick="exportSummary()">Download Report (.txt)</button>
+          <button class="btn-secondary" onclick="printDashboard()">Print Dashboard</button>
+        </div>
+        <p class="intel-desc">Download a text report of your current comparison, or print the full dashboard.</p>
       </div>
 
     </div>
@@ -248,6 +292,7 @@
   <script src="js/calculators.js"></script>
   <script src="js/charts.js"></script>
   <script src="js/providers.js"></script>
+  <script src="js/intelligence.js"></script>
   <script src="js/app.js"></script>
 
 </body>

@@ -147,6 +147,11 @@ function update() {
   if (typeof updateAllCharts === 'function') {
     updateAllCharts();
   }
+
+  // Update provider comparison (Phase 3)
+  if (typeof updateProviderSection === 'function') {
+    updateProviderSection();
+  }
 }
 
 function updateCard(type, data, cheapest, maxCost) {

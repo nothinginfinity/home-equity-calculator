@@ -180,6 +180,43 @@
         </div>
       </div>
 
+      <!-- HEI Provider Deep Dive -->
+      <div class="provider-section">
+        <h3>HEI Provider Comparison</h3>
+        <p class="provider-subtitle">Cost calculated using each provider's specific risk adjustment, origination fee, and term length</p>
+        <div class="provider-table-wrap">
+          <table class="provider-table">
+            <thead>
+              <tr>
+                <th class="sort-header sort-asc" data-col="name" onclick="sortProviderTable('name')">Provider</th>
+                <th class="sort-header" data-col="origFee" onclick="sortProviderTable('origFee')">Orig. Fee</th>
+                <th class="sort-header" data-col="riskAdj" onclick="sortProviderTable('riskAdj')">Risk Adj.</th>
+                <th class="sort-header" data-col="equityShare" onclick="sortProviderTable('equityShare')">Equity Share</th>
+                <th class="sort-header" data-col="term" onclick="sortProviderTable('term')">Term</th>
+                <th class="sort-header" data-col="investorPayout" onclick="sortProviderTable('investorPayout')">Investor Gets</th>
+                <th class="sort-header" data-col="origCost" onclick="sortProviderTable('origCost')">Fee Cost</th>
+                <th class="sort-header sort-asc" data-col="totalCost" onclick="sortProviderTable('totalCost')">Total Cost</th>
+                <th class="sort-header" data-col="effectiveRate" onclick="sortProviderTable('effectiveRate')">Eff. Rate</th>
+              </tr>
+            </thead>
+            <tbody id="provider-table-body"></tbody>
+          </table>
+        </div>
+
+        <!-- Risk Adjustment Visual -->
+        <div class="risk-adj-section">
+          <h4>Risk Adjustment Explainer</h4>
+          <p class="risk-adj-desc">HEI providers apply a "risk adjustment" — they value your home <strong>below</strong> its appraised value before calculating their equity share. This means they get a larger percentage of your home's future value than you'd expect.</p>
+          <div id="risk-adj-viz" class="risk-adj-viz"></div>
+        </div>
+
+        <!-- Origination Fee Breakdown -->
+        <div class="fee-section">
+          <h4>Origination Fee Comparison</h4>
+          <div id="fee-breakdown" class="fee-breakdown"></div>
+        </div>
+      </div>
+
       <!-- Qualification Check -->
       <div class="qual-section">
         <h3>Qualification Check</h3>
@@ -210,6 +247,7 @@
 
   <script src="js/calculators.js"></script>
   <script src="js/charts.js"></script>
+  <script src="js/providers.js"></script>
   <script src="js/app.js"></script>
 
 </body>

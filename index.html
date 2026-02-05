@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/funnel.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
@@ -240,6 +241,9 @@
       <div class="decision-box">
         <h3>Decision Helper</h3>
         <p></p>
+        <div class="decision-cta">
+          <button class="btn-primary btn-lg" onclick="openFunnel()">Start Application Funnel &rarr;</button>
+        </div>
       </div>
 
       <!-- Phase 4: Decision Intelligence -->
@@ -289,10 +293,37 @@
     </div>
   </div>
 
+  <!-- ── Funnel Overlay ── -->
+  <div id="funnel-overlay" class="funnel-overlay">
+    <div class="funnel-container">
+      <div class="funnel-top-bar">
+        <div id="funnel-progress" class="funnel-progress"></div>
+        <button class="funnel-close" onclick="closeFunnel()" title="Close">&times;</button>
+      </div>
+      <div class="funnel-body">
+        <div id="funnel-content" class="funnel-content"></div>
+        <div id="chat-panel" class="chat-panel">
+          <div class="chat-header" onclick="toggleChat()">
+            <span class="chat-title">Loan Advisor</span>
+            <span class="chat-toggle">&mdash;</span>
+          </div>
+          <div id="chat-messages" class="chat-messages"></div>
+          <div class="chat-input-bar">
+            <input type="text" id="chat-input" placeholder="Ask me anything or tell me what to fill..."
+                   onkeydown="handleChatKeydown(event)" autocomplete="off">
+            <button class="chat-send" onclick="handleChatInput()">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="js/calculators.js"></script>
   <script src="js/charts.js"></script>
   <script src="js/providers.js"></script>
   <script src="js/intelligence.js"></script>
+  <script src="js/funnel.js"></script>
+  <script src="js/chat.js"></script>
   <script src="js/app.js"></script>
 
 </body>

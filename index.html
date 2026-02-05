@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Equity Calculator Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="header">
+    <h1>Home Equity Calculator</h1>
+    <span class="subtitle">Compare HEI vs Home Equity Loan vs HELOC — see the real cost</span>
+  </div>
+
+  <div class="dashboard">
+
+    <!-- ── Sidebar: Inputs ── -->
+    <div class="sidebar">
+      <h2>Your Home</h2>
+
+      <div class="input-group">
+        <label>Home Value</label>
+        <div class="value-display" id="home-value-display">$500,000</div>
+        <input type="range" id="home-value">
+        <div class="range-labels"><span>$100K</span><span>$2M</span></div>
+      </div>
+
+      <div class="input-group">
+        <label>Mortgage Balance</label>
+        <div class="value-display" id="mortgage-balance-display">$200,000</div>
+        <input type="range" id="mortgage-balance">
+        <div class="range-labels"><span>$0</span><span>$1.5M</span></div>
+      </div>
+
+      <div class="home-summary">
+        <div class="stat-row">
+          <span class="label">Available Equity</span>
+          <span class="val" id="equity-val">$300,000</span>
+        </div>
+        <div class="stat-row">
+          <span class="label">Equity %</span>
+          <span class="val" id="equity-pct">60.0%</span>
+        </div>
+        <div class="stat-row">
+          <span class="label">LTV Ratio</span>
+          <span class="val" id="ltv-val">40.0%</span>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <h2>Loan Scenario</h2>
+
+      <div class="input-group">
+        <label>Cash Needed</label>
+        <div class="value-display" id="cash-needed-display">$75,000</div>
+        <input type="range" id="cash-needed">
+        <div class="range-labels"><span>$15K</span><span>$600K</span></div>
+      </div>
+
+      <div class="input-group">
+        <label>Time Horizon</label>
+        <div class="value-display" id="time-horizon-display">10 years</div>
+        <input type="range" id="time-horizon">
+        <div class="range-labels"><span>5 yrs</span><span>30 yrs</span></div>
+      </div>
+
+      <div class="input-group">
+        <label>Home Appreciation Rate</label>
+        <div class="value-display" id="appreciation-rate-display">4.0% / yr</div>
+        <input type="range" id="appreciation-rate">
+        <div class="range-labels"><span>0%</span><span>10%</span></div>
+      </div>
+
+      <hr class="divider">
+      <h2>Your Profile</h2>
+
+      <div class="input-group">
+        <label>Credit Score</label>
+        <div class="value-display" id="credit-score-display">700</div>
+        <input type="range" id="credit-score">
+        <div class="range-labels"><span>400</span><span>850</span></div>
+      </div>
+
+      <div class="input-group">
+        <label>Debt-to-Income Ratio</label>
+        <div class="value-display" id="dti-ratio-display">35%</div>
+        <input type="range" id="dti-ratio">
+        <div class="range-labels"><span>0%</span><span>60%</span></div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="rate-inputs">
+        <h3>Market Rates (Editable)</h3>
+        <div class="rate-row">
+          <label>HE Loan Rate</label>
+          <input type="number" id="heq-rate" step="0.1" min="0" max="20">
+          <span class="unit">%</span>
+        </div>
+        <div class="rate-row">
+          <label>HELOC Rate</label>
+          <input type="number" id="heloc-rate" step="0.1" min="0" max="20">
+          <span class="unit">%</span>
+        </div>
+        <div class="rate-row">
+          <label>HELOC Cap</label>
+          <input type="number" id="heloc-cap" step="0.5" min="0" max="25">
+          <span class="unit">%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Main: Results ── -->
+    <div class="main">
+
+      <!-- Comparison Cards -->
+      <div class="cards-row">
+
+        <!-- HEI Card -->
+        <div class="card hei">
+          <div class="card-type">HEI</div>
+          <div class="card-title">Home Equity Investment</div>
+          <div class="big-number">$0</div>
+          <div class="big-label">Total Cost</div>
+          <div class="card-stats"></div>
+          <div class="cost-bar-container">
+            <div class="cost-bar-label">Relative Cost</div>
+            <div class="cost-bar"><div class="fill" style="width: 0%"></div></div>
+          </div>
+        </div>
+
+        <!-- Home Equity Loan Card -->
+        <div class="card heq">
+          <div class="card-type">Home Equity Loan</div>
+          <div class="card-title">Fixed-Rate Second Mortgage</div>
+          <div class="big-number">$0</div>
+          <div class="big-label">Total Cost</div>
+          <div class="card-stats"></div>
+          <div class="cost-bar-container">
+            <div class="cost-bar-label">Relative Cost</div>
+            <div class="cost-bar"><div class="fill" style="width: 0%"></div></div>
+          </div>
+        </div>
+
+        <!-- HELOC Card -->
+        <div class="card heloc">
+          <div class="card-type">HELOC</div>
+          <div class="card-title">Home Equity Line of Credit</div>
+          <div class="big-number">$0</div>
+          <div class="big-label">Total Cost</div>
+          <div class="card-stats"></div>
+          <div class="cost-bar-container">
+            <div class="cost-bar-label">Relative Cost</div>
+            <div class="cost-bar"><div class="fill" style="width: 0%"></div></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Qualification Check -->
+      <div class="qual-section">
+        <h3>Qualification Check</h3>
+        <div class="qual-grid">
+          <div class="qual-item hei">
+            <div class="qual-status pass"></div>
+            <div class="qual-reason"></div>
+          </div>
+          <div class="qual-item heq">
+            <div class="qual-status pass"></div>
+            <div class="qual-reason"></div>
+          </div>
+          <div class="qual-item heloc">
+            <div class="qual-status pass"></div>
+            <div class="qual-reason"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decision Helper -->
+      <div class="decision-box">
+        <h3>Decision Helper</h3>
+        <p></p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/calculators.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
